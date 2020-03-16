@@ -1,0 +1,847 @@
+##################N uptake freq
+
+A_22_rec <- read.csv("N_uptake_for_ANOVA.csv")
+> attach(A_22_rec)
+> status <-as.factor(functional_group)
+> ANOVA1 <-aov(N_gene_frq~status)
+> summary(ANOVA1)
+              Df Sum Sq Mean Sq F value Pr(>F)    
+status        18  563.4  31.301   22.75 <2e-16 ***
+Residuals   2278 3134.0   1.376                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> #Posthoc Tukey 
+> posthoc <- TukeyHSD(ANOVA1)
+> posthoc
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = N_gene_frq ~ status)
+
+$`status`
+                                             diff         lwr          upr
+Animal Pathogen-Agaricoid             1.663249921  0.92750509  2.398994753
+Boletoid-Agaricoid                    0.222417213 -1.02633021  1.471164641
+Brown Rot-Agaricoid                   0.127761760 -0.78625339  1.041776912
+Corticioid-Agaricoid                  0.065512120 -0.80863086  0.939655096
+Ectomycorrhizal-Agaricoid             0.271426766 -0.44828076  0.991134298
+Endophyte-Agaricoid                   1.452375296  0.56904108  2.335709514
+Gasteroid-Agaricoid                   0.233026666 -0.86008047  1.326133804
+Microfungus-Agaricoid                 1.179121723  0.59007883  1.768164618
+Pathotroph-Agaricoid                  1.043652725  0.47921535  1.608090101
+Plant Pathogen-Agaricoid              1.004532985  0.41134882  1.597717147
+Polyporoid-Agaricoid                 -0.061841918 -0.87014866  0.746464823
+Saprotroph-Agaricoid                  0.936537185  0.40694427  1.466130100
+Soft Rot-Agaricoid                    1.250667306  0.49630264  2.005031970
+Symbiotroph-Agaricoid                 0.827580857  0.20989802  1.445263691
+Undefined Saprotroph-Agaricoid        1.103055433  0.55618689  1.649923978
+White Rot-Agaricoid                   0.006951055 -0.64348938  0.657391493
+Wood Saprotroph-Agaricoid             0.508905135 -0.08164788  1.099458147
+Yeast-Agaricoid                       2.487407201  1.80884838  3.165966016
+Boletoid-Animal Pathogen             -1.440832708 -2.70821432 -0.173451091
+Brown Rot-Animal Pathogen            -1.535488161 -2.47480159 -0.596174729
+Corticioid-Animal Pathogen           -1.597737801 -2.49829983 -0.697175773
+Ectomycorrhizal-Animal Pathogen      -1.391823155 -2.14339814 -0.640248172
+Endophyte-Animal Pathogen            -0.210874625 -1.12036094  0.698611695
+Gasteroid-Animal Pathogen            -1.430223255 -2.54457026 -0.315876254
+Microfungus-Animal Pathogen          -0.484128198 -1.11170891  0.143452519
+Pathotroph-Animal Pathogen           -0.619597196 -1.22414296 -0.015051436
+Plant Pathogen-Animal Pathogen       -0.658716936 -1.29018623 -0.027247638
+Polyporoid-Animal Pathogen           -1.725091838 -2.56189875 -0.888284924
+Saprotroph-Animal Pathogen           -0.726712736 -1.29886191 -0.154563560
+Soft Rot-Animal Pathogen             -0.412582615 -1.19740875  0.372243526
+Symbiotroph-Animal Pathogen          -0.835669063 -1.49020562 -0.181132505
+Undefined Saprotroph-Animal Pathogen -0.560194487 -1.14837068  0.027981701
+White Rot-Animal Pathogen            -1.656298866 -2.34183427 -0.970763464
+Wood Saprotroph-Animal Pathogen      -1.154344786 -1.78334310 -0.525346468
+Yeast-Animal Pathogen                 0.824157280  0.11188760  1.536426955
+Brown Rot-Boletoid                   -0.094655453 -1.47319069  1.283879785
+Corticioid-Boletoid                  -0.156905094 -1.50933315  1.195522962
+Ectomycorrhizal-Boletoid              0.049009553 -1.20912980  1.307148907
+Endophyte-Boletoid                    1.229958083 -0.12842884  2.588345010
+Gasteroid-Boletoid                    0.010609453 -1.49265996  1.513878863
+Microfungus-Boletoid                  0.956704510 -0.23153252  2.144941538
+Pathotroph-Boletoid                   0.821235512 -0.35499799  1.997469015
+Plant Pathogen-Boletoid               0.782115772 -0.40817963  1.972411178
+Polyporoid-Boletoid                  -0.284259131 -1.59509684  1.026578575
+Saprotroph-Boletoid                   0.714119971 -0.44579570  1.874035640
+Soft Rot-Boletoid                     1.028250093 -0.25003069  2.306530872
+Symbiotroph-Boletoid                  0.605163644 -0.59752825  1.807855536
+Undefined Saprotroph-Boletoid         0.880638220 -0.28726627  2.048542715
+White Rot-Boletoid                   -0.215466158 -1.43530568  1.004373367
+Wood Saprotroph-Boletoid              0.286487922 -0.90249844  1.475474281
+Yeast-Boletoid                        2.264989987  1.02992814  3.500051836
+Corticioid-Brown Rot                 -0.062249640 -1.11349424  0.988994959
+Ectomycorrhizal-Brown Rot             0.143665006 -0.78314036  1.070470377
+Endophyte-Brown Rot                   1.324613536  0.26571382  2.383513251
+Gasteroid-Brown Rot                   0.105264906 -1.13403832  1.344568130
+Microfungus-Brown Rot                 1.051359963  0.22192594  1.880793985
+Pathotroph-Brown Rot                  0.915890965  0.10374639  1.728035543
+Plant Pathogen-Brown Rot              0.876771225  0.04439108  1.709151376
+Polyporoid-Brown Rot                 -0.189603678 -1.18677420  0.807566845
+Saprotroph-Brown Rot                  0.808775425  0.02044940  1.597101449
+Soft Rot-Brown Rot                    1.122905546  0.16893735  2.076873738
+Symbiotroph-Brown Rot                 0.699819097 -0.15019346  1.549831655
+Undefined Saprotroph-Brown Rot        0.975293673  0.17525963  1.775327716
+White Rot-Brown Rot                  -0.120810705 -0.99491712  0.753295712
+Wood Saprotroph-Brown Rot             0.381143375 -0.44936377  1.211650524
+Yeast-Brown Rot                       2.359645440  1.46441847  3.254872412
+Ectomycorrhizal-Corticioid            0.205914647 -0.68159335  1.093422641
+Endophyte-Corticioid                  1.386863177  0.36218232  2.411544029
+Gasteroid-Corticioid                  0.167514546 -1.04268160  1.377710698
+Microfungus-Corticioid                1.113609603  0.32833065  1.898888561
+Pathotroph-Corticioid                 0.978140605  0.21114578  1.745135430
+Plant Pathogen-Corticioid             0.939020866  0.15063076  1.727410972
+Polyporoid-Corticioid                -0.127354037 -1.08810962  0.833401549
+Saprotroph-Corticioid                 0.871025065  0.12929724  1.612752889
+Soft Rot-Corticioid                   1.185155187  0.26931811  2.100992266
+Symbiotroph-Corticioid                0.762068738 -0.04491552  1.569052995
+Undefined Saprotroph-Corticioid       1.037543314  0.28338371  1.791702922
+White Rot-Corticioid                 -0.058561065 -0.89088568  0.773763555
+Wood Saprotroph-Corticioid            0.443393015 -0.34301932  1.229805356
+Yeast-Corticioid                      2.421895081  1.56741654  3.276373621
+Endophyte-Ectomycorrhizal             1.180948530  0.28438630  2.077510763
+Gasteroid-Ectomycorrhizal            -0.038400100 -1.14222423  1.065424031
+Microfungus-Ectomycorrhizal           0.907694957  0.29899468  1.516395235
+Pathotroph-Ectomycorrhizal            0.772225959  0.18730370  1.357148217
+Plant Pathogen-Ectomycorrhizal        0.733106219  0.12039752  1.345814915
+Polyporoid-Ectomycorrhizal           -0.333268684 -1.15601061  0.489473247
+Saprotroph-Ectomycorrhizal            0.665110418  0.11373654  1.216484295
+Soft Rot-Ectomycorrhizal              0.979240540  0.20942852  1.749052558
+Symbiotroph-Ectomycorrhizal           0.556154091 -0.08030218  1.192610358
+Undefined Saprotroph-Ectomycorrhizal  0.831628667  0.26364125  1.399616080
+White Rot-Ectomycorrhizal            -0.264475711 -0.93277000  0.403818580
+Wood Saprotroph-Ectomycorrhizal       0.237478369 -0.37268338  0.847640115
+Yeast-Ectomycorrhizal                 2.215980434  1.52028901  2.911671862
+Gasteroid-Endophyte                  -1.219348630 -2.43620036 -0.002496904
+Microfungus-Endophyte                -0.273253573 -1.06875118  0.522244032
+Pathotroph-Endophyte                 -0.408722571 -1.18617640  0.368731259
+Plant Pathogen-Endophyte             -0.447842311 -1.24641125  0.350726632
+Polyporoid-Endophyte                 -1.514217214 -2.48334295 -0.545091477
+Saprotroph-Endophyte                 -0.515838112 -1.26837619  0.236699969
+Soft Rot-Endophyte                   -0.201707990 -1.12632194  0.722905958
+Symbiotroph-Endophyte                -0.624794439 -1.44172589  0.192137009
+Undefined Saprotroph-Endophyte       -0.349319863 -1.11411403  0.415474300
+White Rot-Endophyte                  -1.445424241 -2.28739673 -0.603451754
+Wood Saprotroph-Endophyte            -0.943470161 -1.74008661 -0.146853712
+Yeast-Endophyte                       1.035031904  0.17115288  1.898910931
+Microfungus-Gasteroid                 0.946095057 -0.07734049  1.969530601
+Pathotroph-Gasteroid                  0.810626059 -0.19884823  1.820100344
+Plant Pathogen-Gasteroid              0.771506319 -0.25431834  1.797330978
+Polyporoid-Gasteroid                 -0.294868584 -1.45840138  0.868664213
+Saprotroph-Gasteroid                  0.703510519 -0.28690224  1.693923279
+Soft Rot-Gasteroid                    1.017640640 -0.10908685  2.144368126
+Symbiotroph-Gasteroid                 0.594554191 -0.44562890  1.634737283
+Undefined Saprotroph-Gasteroid        0.870028767 -0.12972820  1.869785731
+White Rot-Gasteroid                  -0.226075611 -1.28603860  0.833887381
+Wood Saprotroph-Gasteroid             0.275878469 -0.74842697  1.300183912
+Yeast-Gasteroid                       2.254380534  1.17693409  3.331826982
+Pathotroph-Microfungus               -0.135468998 -0.54914357  0.278205572
+Plant Pathogen-Microfungus           -0.174588738 -0.62669995  0.277522475
+Polyporoid-Microfungus               -1.240963641 -1.95222793 -0.529699353
+Saprotroph-Microfungus               -0.242584538 -0.60728408  0.122115001
+Soft Rot-Microfungus                  0.071545583 -0.57776416  0.720855328
+Symbiotroph-Microfungus              -0.351540866 -0.83534783  0.132266102
+Undefined Saprotroph-Microfungus     -0.076066290 -0.46542769  0.313295115
+White Rot-Microfungus                -1.172170668 -1.69715625 -0.647185086
+Wood Saprotroph-Microfungus          -0.670216588 -1.11887008 -0.221563093
+Yeast-Microfungus                     1.308285477  0.74884007  1.867730886
+Plant Pathogen-Pathotroph            -0.039119740 -0.45867017  0.380430695
+Polyporoid-Pathotroph                -1.105494642 -1.79651918 -0.414470109
+Saprotroph-Pathotroph                -0.107115540 -0.43057152  0.216340443
+Soft Rot-Pathotroph                   0.207014581 -0.42005891  0.834088073
+Symbiotroph-Pathotroph               -0.216071867 -0.66959938  0.237455640
+Undefined Saprotroph-Pathotroph       0.059402708 -0.29162482  0.410430232
+White Rot-Pathotroph                 -1.036701670 -1.53392182 -0.539481517
+Wood Saprotroph-Pathotroph           -0.534747590 -0.95056964 -0.118925540
+Yeast-Pathotroph                      1.443754476  0.91027797  1.977230983
+Polyporoid-Plant Pathogen            -1.066374903 -1.78107260 -0.351677202
+Saprotroph-Plant Pathogen            -0.067995801 -0.43934694  0.303355342
+Soft Rot-Plant Pathogen               0.246134321 -0.40693464  0.899203278
+Symbiotroph-Plant Pathogen           -0.176952128 -0.66579269  0.311888438
+Undefined Saprotroph-Plant Pathogen   0.098522448 -0.29707611  0.494121008
+White Rot-Plant Pathogen             -0.997581930 -1.52720989 -0.467953968
+Wood Saprotroph-Plant Pathogen       -0.495627850 -0.94970480 -0.041550901
+Yeast-Plant Pathogen                  1.482874215  0.91907010  2.046678332
+Saprotroph-Polyporoid                 0.998379102  0.33551108  1.661247120
+Soft Rot-Polyporoid                   1.312509224  0.45928510  2.165733345
+Symbiotroph-Polyporoid                0.889422775  0.15426467  1.624580878
+Undefined Saprotroph-Polyporoid       1.164897351  0.48814735  1.841647348
+White Rot-Polyporoid                  0.068792973 -0.69409504  0.831680983
+Wood Saprotroph-Polyporoid            0.570747053 -0.14176836  1.283262465
+Yeast-Polyporoid                      2.549249118  1.76225012  3.336248114
+Soft Rot-Saprotroph                   0.314130122 -0.28177278  0.910033023
+Symbiotroph-Saprotroph               -0.108956327 -0.51830496  0.300392307
+Undefined Saprotroph-Saprotroph       0.166518249 -0.12519981  0.458236308
+White Rot-Saprotroph                 -0.929586130 -1.38686830 -0.472303958
+Wood Saprotroph-Saprotroph           -0.427632050 -0.79476565 -0.060498448
+Yeast-Saprotroph                      1.550870016  1.05440623  2.047333799
+Symbiotroph-Soft Rot                 -0.423086449 -1.09848536  0.252312467
+Undefined Saprotroph-Soft Rot        -0.147611873 -0.75891934  0.463695593
+White Rot-Soft Rot                   -1.243716251 -1.94919791 -0.538234589
+Wood Saprotroph-Soft Rot             -0.741762171 -1.39244218 -0.091082164
+Yeast-Soft Rot                        1.236739894  0.50525259  1.968227201
+Undefined Saprotroph-Symbiotroph      0.275474576 -0.15599136  0.706940512
+White Rot-Symbiotroph                -0.820629803 -1.37755925 -0.263700353
+Wood Saprotroph-Symbiotroph          -0.318675722 -0.80432015  0.166968704
+Yeast-Symbiotroph                     1.659826343  1.07030135  2.249351334
+White Rot-Undefined Saprotroph       -1.096104378 -1.57328729 -0.618921464
+Wood Saprotroph-Undefined Saprotroph -0.594150298 -0.98579252 -0.202508076
+Yeast-Undefined Saprotroph            1.384351767  0.86949952  1.899204015
+Wood Saprotroph-White Rot             0.501954080 -0.02472532  1.028633479
+Yeast-White Rot                       2.480456146  1.85669305  3.104219238
+Yeast-Wood Saprotroph                 1.978502065  1.41746687  2.539537262
+
+
+                                         p adj
+
+
+Yeast-Animal Pathogen                0.0067390
+Yeast-Endophyte                      0.0037351
+
+
+Microfungus-Animal Pathogen          0.3931487
+
+
+Animal Pathogen-Agaricoid            0.0000000
+Boletoid-Agaricoid                   1.0000000
+Brown Rot-Agaricoid                  1.0000000
+Corticioid-Agaricoid                 1.0000000
+Ectomycorrhizal-Agaricoid            0.9984566
+Endophyte-Agaricoid                  0.0000014
+Gasteroid-Agaricoid                  0.9999997
+Microfungus-Agaricoid                0.0000000
+Pathotroph-Agaricoid                 0.0000000
+Plant Pathogen-Agaricoid             0.0000005
+Polyporoid-Agaricoid                 1.0000000
+Saprotroph-Agaricoid                 0.0000001
+Soft Rot-Agaricoid                   0.0000010
+Symbiotroph-Agaricoid                0.0004022
+Undefined Saprotroph-Agaricoid       0.0000000
+White Rot-Agaricoid                  1.0000000
+Wood Saprotroph-Agaricoid            0.1994063
+Yeast-Agaricoid                      0.0000000
+Boletoid-Animal Pathogen             0.0089275
+Brown Rot-Animal Pathogen            0.0000017
+Corticioid-Animal Pathogen           0.0000001
+Ectomycorrhizal-Animal Pathogen      0.0000000
+Endophyte-Animal Pathogen            0.9999987
+Gasteroid-Animal Pathogen            0.0010098
+Pathotroph-Animal Pathogen           0.0374520
+Plant Pathogen-Animal Pathogen       0.0300858
+Polyporoid-Animal Pathogen           0.0000000
+Saprotroph-Animal Pathogen           0.0012471
+Soft Rot-Animal Pathogen             0.9410270
+Symbiotroph-Animal Pathogen          0.0011238
+Undefined Saprotroph-Animal Pathogen 0.0840693
+White Rot-Animal Pathogen            0.0000000
+Wood Saprotroph-Animal Pathogen      0.0000000
+Brown Rot-Boletoid                   1.0000000
+Corticioid-Boletoid                  1.0000000
+Ectomycorrhizal-Boletoid             1.0000000
+Endophyte-Boletoid                   0.1343724
+Gasteroid-Boletoid                   1.0000000
+Microfungus-Boletoid                 0.3120169
+Pathotroph-Boletoid                  0.5903207
+Plant Pathogen-Boletoid              0.7001154
+Polyporoid-Boletoid                  0.9999995
+Saprotroph-Boletoid                  0.7984645
+Soft Rot-Boletoid                    0.3137067
+Symbiotroph-Boletoid                 0.9606121
+Undefined Saprotroph-Boletoid        0.4381748
+White Rot-Boletoid                   1.0000000
+Wood Saprotroph-Boletoid             0.9999976
+Yeast-Boletoid                       0.0000000
+Corticioid-Brown Rot                 1.0000000
+Ectomycorrhizal-Brown Rot            1.0000000
+Endophyte-Brown Rot                  0.0016835
+Gasteroid-Brown Rot                  1.0000000
+Microfungus-Brown Rot                0.0012988
+Pathotroph-Brown Rot                 0.0101119
+Plant Pathogen-Brown Rot             0.0265578
+Polyporoid-Brown Rot                 0.9999999
+Saprotroph-Brown Rot                 0.0369921
+Soft Rot-Brown Rot                   0.0050708
+Symbiotroph-Brown Rot                0.2724488
+Undefined Saprotroph-Brown Rot       0.0027366
+White Rot-Brown Rot                  1.0000000
+Wood Saprotroph-Brown Rot            0.9844600
+Yeast-Brown Rot                      0.0000000
+Ectomycorrhizal-Corticioid           0.9999987
+Endophyte-Corticioid                 0.0003197
+Gasteroid-Corticioid                 1.0000000
+Microfungus-Corticioid               0.0001042
+Pathotroph-Corticioid                0.0011498
+Plant Pathogen-Corticioid            0.0041419
+Polyporoid-Corticioid                1.0000000
+Saprotroph-Corticioid                0.0052765
+Soft Rot-Corticioid                  0.0008521
+Symbiotroph-Corticioid               0.0914283
+Undefined Saprotroph-Corticioid      0.0002185
+White Rot-Corticioid                 1.0000000
+Wood Saprotroph-Corticioid           0.8936529
+Yeast-Corticioid                     0.0000000
+Endophyte-Ectomycorrhizal            0.0005850
+Gasteroid-Ectomycorrhizal            1.0000000
+Microfungus-Ectomycorrhizal          0.0000275
+Pathotroph-Ectomycorrhizal           0.0005567
+Plant Pathogen-Ectomycorrhizal       0.0038251
+Polyporoid-Ectomycorrhizal           0.9962510
+Saprotroph-Ectomycorrhizal           0.0033115
+Soft Rot-Ectomycorrhizal             0.0012102
+Symbiotroph-Ectomycorrhizal          0.1795329
+Undefined Saprotroph-Ectomycorrhizal 0.0000453
+White Rot-Ectomycorrhizal            0.9971771
+Wood Saprotroph-Ectomycorrhizal      0.9977035
+Yeast-Ectomycorrhizal                0.0000000
+Gasteroid-Endophyte                  0.0488445
+Microfungus-Endophyte                0.9995491
+Pathotroph-Endophyte                 0.9410070
+Plant Pathogen-Endophyte             0.8980907
+Polyporoid-Endophyte                 0.0000070
+Saprotroph-Endophyte                 0.6250640
+Soft Rot-Endophyte                   0.9999995
+Symbiotroph-Endophyte                0.4100578
+Undefined Saprotroph-Endophyte       0.9852318
+White Rot-Endophyte                  0.0000003
+Wood Saprotroph-Endophyte            0.0045666
+Microfungus-Gasteroid                0.1117875
+Pathotroph-Gasteroid                 0.3168547
+Plant Pathogen-Gasteroid             0.4433284
+Polyporoid-Gasteroid                 0.9999947
+Saprotroph-Gasteroid                 0.5569403
+Soft Rot-Gasteroid                   0.1372969
+Symbiotroph-Gasteroid                0.8816414
+Undefined Saprotroph-Gasteroid       0.1852804
+White Rot-Gasteroid                  0.9999997
+Wood Saprotroph-Gasteroid            0.9999865
+Yeast-Gasteroid                      0.0000000
+Pathotroph-Microfungus               0.9997662
+Plant Pathogen-Microfungus           0.9979181
+Polyporoid-Microfungus               0.0000002
+Saprotroph-Microfungus               0.6792042
+Soft Rot-Microfungus                 1.0000000
+Symbiotroph-Microfungus              0.5121218
+Undefined Saprotroph-Microfungus     0.9999999
+White Rot-Microfungus                0.0000000
+Wood Saprotroph-Microfungus          0.0000261
+Yeast-Microfungus                    0.0000000
+Plant Pathogen-Pathotroph            1.0000000
+Polyporoid-Pathotroph                0.0000033
+Saprotroph-Pathotroph                0.9997269
+Soft Rot-Pathotroph                  0.9997385
+Symbiotroph-Pathotroph               0.9770253
+Undefined Saprotroph-Pathotroph      1.0000000
+White Rot-Pathotroph                 0.0000000
+Wood Saprotroph-Pathotroph           0.0009697
+Yeast-Pathotroph                     0.0000000
+Polyporoid-Plant Pathogen            0.0000270
+Saprotroph-Plant Pathogen            1.0000000
+Soft Rot-Plant Pathogen              0.9984694
+Symbiotroph-Plant Pathogen           0.9990923
+Undefined Saprotroph-Plant Pathogen  0.9999959
+White Rot-Plant Pathogen             0.0000000
+Wood Saprotroph-Plant Pathogen       0.0163721
+Yeast-Plant Pathogen                 0.0000000
+Saprotroph-Polyporoid                0.0000207
+Soft Rot-Polyporoid                  0.0000112
+Symbiotroph-Polyporoid               0.0031410
+Undefined Saprotroph-Polyporoid      0.0000003
+White Rot-Polyporoid                 1.0000000
+Wood Saprotroph-Polyporoid           0.3214081
+Yeast-Polyporoid                     0.0000000
+Soft Rot-Saprotroph                  0.9395633
+Symbiotroph-Saprotroph               0.9999887
+Undefined Saprotroph-Saprotroph      0.8828634
+White Rot-Saprotroph                 0.0000000
+Wood Saprotroph-Saprotroph           0.0060446
+Yeast-Saprotroph                     0.0000000
+Symbiotroph-Soft Rot                 0.7745542
+Undefined Saprotroph-Soft Rot        0.9999975
+White Rot-Soft Rot                   0.0000001
+Wood Saprotroph-Soft Rot             0.0085519
+Yeast-Soft Rot                       0.0000005
+Undefined Saprotroph-Symbiotroph     0.7463497
+White Rot-Symbiotroph                0.0000382
+Wood Saprotroph-Symbiotroph          0.7023780
+Yeast-Symbiotroph                    0.0000000
+White Rot-Undefined Saprotroph       0.0000000
+Wood Saprotroph-Undefined Saprotroph 0.0000169
+Yeast-Undefined Saprotroph           0.0000000
+Wood Saprotroph-White Rot            0.0835185
+Yeast-White Rot                      0.0000000
+Yeast-Wood Saprotroph                0.0000000
+
+$groups
+                     N_gene_frq groups
+Yeast                 3.1194917      a
+Animal Pathogen       2.2953344      b
+Endophyte             2.0844598     bc
+Soft Rot              1.8827518     bc
+Microfungus           1.8112062     bc
+Undefined Saprotroph  1.7351399     bc
+Pathotroph            1.6757372      c
+Plant Pathogen        1.6366174      c
+Saprotroph            1.5686216      c
+Symbiotroph           1.4596653     cd
+Wood Saprotroph       1.1409896     de
+Ectomycorrhizal       0.9035112     de
+Gasteroid             0.8651111     de
+Boletoid              0.8545017     de
+Brown Rot             0.7598462     de
+Corticioid            0.6975966     de
+White Rot             0.6390355      e
+Agaricoid             0.6320845      e
+Polyporoid            0.5702425      e
+
+
+
+##############C acquistion frequency 
+
+> #A_22 at 22 Recalcitrant 
+> A_22_rec <- read.csv("C_uptake_for_ANOVA.csv")
+> attach(A_22_rec)
+> status <-as.factor(functional_group)
+> ANOVA1 <-aov(C_gene_frq~status)
+> summary(ANOVA1)
+              Df Sum Sq Mean Sq F value Pr(>F)    
+status        18   2474  137.45   22.13 <2e-16 ***
+Residuals   2234  13873    6.21                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> #Posthoc Tukey 
+> posthoc <- TukeyHSD(ANOVA1)
+> posthoc
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = C_gene_frq ~ status)
+
+$`status`
+                                             diff         lwr         upr
+Animal Pathogen-Agaricoid            -2.208769742 -3.79493379 -0.62260570
+Boletoid-Agaricoid                   -3.199616509 -5.85271794 -0.54651508
+Brown Rot-Agaricoid                  -2.053278012 -3.99520386 -0.11135216
+Corticioid-Agaricoid                  0.098491604 -1.75872141  1.95570462
+Ectomycorrhizal-Agaricoid            -2.079044515 -3.64221543 -0.51587360
+Endophyte-Agaricoid                  -0.925255264 -2.84425791  0.99374738
+Gasteroid-Agaricoid                  -0.990159512 -3.31258601  1.33226698
+Microfungus-Agaricoid                 0.122019901 -1.12946660  1.37350640
+Pathotroph-Agaricoid                 -0.746222864 -1.94543223  0.45298650
+Plant Pathogen-Agaricoid              0.116495912 -1.15342526  1.38641708
+Polyporoid-Agaricoid                  1.620465908 -0.09687078  3.33780259
+Saprotroph-Agaricoid                 -0.253632851 -1.37881132  0.87154562
+Soft Rot-Agaricoid                   -0.122172490 -1.72490329  1.48055831
+Symbiotroph-Agaricoid                -1.896430825 -3.20876603 -0.58409562
+Undefined Saprotroph-Agaricoid       -0.659663166 -1.82770221  0.50837588
+White Rot-Agaricoid                   1.998485592  0.61655325  3.38041793
+Wood Saprotroph-Agaricoid             0.452435834 -0.81017521  1.71504688
+Yeast-Agaricoid                      -3.227725521 -4.66939845 -1.78605259
+Boletoid-Animal Pathogen             -0.990846767 -3.69695140  1.71525786
+Brown Rot-Animal Pathogen             0.155491731 -1.85824387  2.16922733
+Corticioid-Animal Pathogen            2.307261346  0.37508763  4.23943506
+Ectomycorrhizal-Animal Pathogen       0.129725227 -1.52180691  1.78125736
+Endophyte-Animal Pathogen             1.283514478 -0.70812460  3.27515356
+Gasteroid-Animal Pathogen             1.218610230 -1.16418642  3.60140688
+Microfungus-Animal Pathogen           2.330789643  0.97054204  3.69103724
+Pathotroph-Animal Pathogen            1.462546878  0.15023663  2.77485712
+Plant Pathogen-Animal Pathogen        2.325265654  0.94803842  3.70249289
+Polyporoid-Animal Pathogen            3.829235650  2.03109762  5.62737368
+Saprotroph-Animal Pathogen            1.955136892  0.71011414  3.20015965
+Soft Rot-Animal Pathogen              2.086597252  0.39757354  3.77562097
+Symbiotroph-Animal Pathogen           0.312338917 -1.10409278  1.72877062
+Undefined Saprotroph-Animal Pathogen  1.549106576  0.26521784  2.83299531
+White Rot-Animal Pathogen             4.207255334  2.72610981  5.68840086
+Wood Saprotroph-Animal Pathogen       2.661205576  1.29071598  4.03169517
+Yeast-Animal Pathogen                -1.018955778 -2.55599056  0.51807900
+Brown Rot-Boletoid                    1.146338498 -1.78251143  4.07518842
+Corticioid-Boletoid                   3.298108113  0.42472577  6.17149046
+Ectomycorrhizal-Boletoid              1.120571994 -1.57211982  3.81326381
+Endophyte-Boletoid                    2.274361245 -0.63934036  5.18806285
+Gasteroid-Boletoid                    2.209456997 -0.98440441  5.40331841
+Microfungus-Boletoid                  3.321636410  0.79709599  5.84617683
+Pathotroph-Boletoid                   2.453393645 -0.04564397  4.95243126
+Plant Pathogen-Boletoid               3.316112421  0.78238282  5.84984202
+Polyporoid-Boletoid                   4.820082417  2.03506335  7.60510148
+Saprotroph-Boletoid                   2.945983658  0.48161508  5.41035223
+Soft Rot-Boletoid                     3.077444019  0.36159573  5.79329231
+Symbiotroph-Boletoid                  1.303185684 -1.25206569  3.85843705
+Undefined Saprotroph-Boletoid         2.539953343  0.05572286  5.02418383
+White Rot-Boletoid                    5.198102101  2.60641869  7.78978551
+Wood Saprotroph-Boletoid              3.652052343  1.12197872  6.18212596
+Yeast-Boletoid                       -0.028109011 -2.65213392  2.59591590
+Corticioid-Brown Rot                  2.151769616 -0.08171530  4.38525454
+Ectomycorrhizal-Brown Rot            -0.025766504 -2.02144133  1.96990832
+Endophyte-Brown Rot                   1.128022748 -1.15709997  3.41314547
+Gasteroid-Brown Rot                   1.063118499 -1.56991768  3.69615468
+Microfungus-Brown Rot                 2.175297912  0.41307399  3.93752183
+Pathotroph-Brown Rot                  1.307055147 -0.41843545  3.03254574
+Plant Pathogen-Brown Rot              2.169773923  0.39441073  3.94513712
+Polyporoid-Brown Rot                  3.673743920  1.55514533  5.79234251
+Saprotroph-Brown Rot                  1.799645161  0.12475971  3.47453061
+Soft Rot-Brown Rot                    1.931105521 -0.09570496  3.95791600
+Symbiotroph-Brown Rot                 0.156847186 -1.64909810  1.96279247
+Undefined Saprotroph-Brown Rot        1.393614846 -0.31035989  3.09758958
+White Rot-Brown Rot                   4.051763603  2.19462826  5.90889895
+Wood Saprotroph-Brown Rot             2.505713845  0.73557223  4.27585546
+Yeast-Brown Rot                      -1.174447509 -3.07645580  0.72756078
+Ectomycorrhizal-Corticioid           -2.177536119 -4.09087932 -0.26419291
+Endophyte-Corticioid                 -1.023746868 -3.23732995  1.18983621
+Gasteroid-Corticioid                 -1.088651116 -3.65984611  1.48254388
+Microfungus-Corticioid                0.023528296 -1.64488333  1.69193992
+Pathotroph-Corticioid                -0.844714469 -2.47427944  0.78485050
+Plant Pathogen-Corticioid             0.018004307 -1.66427946  1.70028807
+Polyporoid-Corticioid                 1.521974304 -0.51925674  3.56320535
+Saprotroph-Corticioid                -0.352124455 -1.92800690  1.22375799
+Soft Rot-Corticioid                  -0.220664094 -2.16646083  1.72513264
+Symbiotroph-Corticioid               -1.994922430 -3.70944935 -0.28039550
+Undefined Saprotroph-Corticioid      -0.758154770 -2.36491988  0.84861034
+White Rot-Corticioid                  1.899993987  0.13162867  3.66835930
+Wood Saprotroph-Corticioid            0.353944229 -1.32282813  2.03071659
+Yeast-Corticioid                     -3.326217125 -5.14165088 -1.51078337
+Endophyte-Ectomycorrhizal             1.153789251 -0.81958683  3.12716534
+Gasteroid-Ectomycorrhizal             1.088885003 -1.27866792  3.45643792
+Microfungus-Ectomycorrhizal           2.201064416  0.86770007  3.53442876
+Pathotroph-Ectomycorrhizal            1.332821651  0.04839761  2.61724569
+Plant Pathogen-Ectomycorrhizal        2.195540427  0.84485845  3.54622240
+Polyporoid-Ectomycorrhizal            3.699510423  1.92162198  5.47739887
+Saprotroph-Ectomycorrhizal            1.825411664  0.60981773  3.04100560
+Soft Rot-Ectomycorrhizal              1.956872025  0.28942246  3.62432159
+Symbiotroph-Ectomycorrhizal           0.182613690 -1.20802131  1.57324869
+Undefined Saprotroph-Ectomycorrhizal  1.419381349  0.16401000  2.67475270
+White Rot-Ectomycorrhizal             4.077530107  2.62103465  5.53402556
+Wood Saprotroph-Ectomycorrhizal       2.531480349  1.18766910  3.87529160
+Yeast-Ectomycorrhizal                -1.148681005 -2.66197637  0.36461436
+Gasteroid-Endophyte                  -0.064904248 -2.68107983  2.55127133
+Microfungus-Endophyte                 1.047275164 -0.68965555  2.78420588
+Pathotroph-Endophyte                  0.179032399 -1.52061843  1.87868323
+Plant Pathogen-Endophyte              1.041751175 -0.70850870  2.79201105
+Polyporoid-Endophyte                  2.545721172  0.44811417  4.64332818
+Saprotroph-Endophyte                  0.671622413 -0.97663013  2.31987495
+Soft Rot-Endophyte                    0.803082774 -1.20177530  2.80794084
+Symbiotroph-Endophyte                -0.971175562 -2.75244857  0.81009745
+Undefined Saprotroph-Endophyte        0.265592098 -1.41221155  1.94339574
+White Rot-Endophyte                   2.923740855  1.09058870  4.75689301
+Wood Saprotroph-Endophyte             1.377691097 -0.36727208  3.12265428
+Yeast-Endophyte                      -2.302470257 -4.18106832 -0.42387219
+Microfungus-Gasteroid                 1.112179413 -1.06222211  3.28658093
+Pathotroph-Gasteroid                  0.243936648 -1.90080264  2.38867594
+Plant Pathogen-Gasteroid              1.106655424 -1.07840826  3.29171911
+Polyporoid-Gasteroid                  2.610625420  0.13857186  5.08267898
+Saprotroph-Gasteroid                  0.736526662 -1.36771432  2.84076764
+Soft Rot-Gasteroid                    0.867987022 -1.52586960  3.26184365
+Symbiotroph-Gasteroid                -0.906271313 -3.11625484  1.30371222
+Undefined Saprotroph-Gasteroid        0.330496346 -1.79697133  2.45796403
+White Rot-Gasteroid                   2.988645104  0.73663700  5.24065321
+Wood Saprotroph-Gasteroid             1.442595346 -0.73822793  3.62341862
+Yeast-Gasteroid                      -2.237566008 -4.52671964  0.05158762
+Pathotroph-Microfungus               -0.868242765 -1.74713995  0.01065442
+Plant Pathogen-Microfungus           -0.005523989 -0.97869249  0.96764451
+Polyporoid-Microfungus                1.498446007 -0.01271330  3.00960531
+Saprotroph-Microfungus               -0.375652751 -1.15049709  0.39919158
+Soft Rot-Microfungus                 -0.244192391 -1.62372245  1.13533767
+Symbiotroph-Microfungus              -2.018450726 -3.04635191 -0.99054954
+Undefined Saprotroph-Microfungus     -0.781683067 -1.61754931  0.05418317
+White Rot-Microfungus                 1.876465691  0.76107601  2.99185538
+Wood Saprotroph-Microfungus           0.330415933 -0.63319384  1.29402571
+Yeast-Microfungus                    -3.349745421 -4.53834880 -2.16114204
+Plant Pathogen-Pathotroph             0.862718776 -0.04223513  1.76767268
+Polyporoid-Pathotroph                 2.366688772  0.89853105  3.83484649
+Saprotroph-Pathotroph                 0.492590014 -0.19462784  1.17980787
+Soft Rot-Pathotroph                   0.624050374 -0.70823632  1.95633706
+Symbiotroph-Pathotroph               -1.150207961 -2.11377710 -0.18663883
+Undefined Saprotroph-Pathotroph       0.086559698 -0.66879255  0.84191194
+White Rot-Pathotroph                  2.744708456  1.68830948  3.80110743
+Wood Saprotroph-Pathotroph            1.198658698  0.30399203  2.09332536
+Yeast-Pathotroph                     -2.481502656 -3.61493225 -1.34807307
+Polyporoid-Plant Pathogen             1.503969996 -0.02249120  3.03043119
+Saprotroph-Plant Pathogen            -0.370128762 -1.17440798  0.43415046
+Soft Rot-Plant Pathogen              -0.238668402 -1.63494363  1.15760682
+Symbiotroph-Plant Pathogen           -2.012926737 -3.06319440 -0.96265908
+Undefined Saprotroph-Plant Pathogen  -0.776159078 -1.63938193  0.08706378
+White Rot-Plant Pathogen              1.881989680  0.74595470  3.01802466
+Wood Saprotroph-Plant Pathogen        0.335939922 -0.65149368  1.32337353
+Yeast-Plant Pathogen                 -3.344221432 -4.55221949 -2.13622337
+Saprotroph-Polyporoid                -1.874098759 -3.28243486 -0.46576266
+Soft Rot-Polyporoid                  -1.742638398 -3.55540700  0.07013021
+Symbiotroph-Polyporoid               -3.516896734 -5.07882108 -1.95497238
+Undefined Saprotroph-Polyporoid      -2.280129074 -3.72293856 -0.83731959
+White Rot-Polyporoid                  0.378019684 -1.24281991  1.99885928
+Wood Saprotroph-Polyporoid           -1.168030075 -2.68841510  0.35235495
+Yeast-Polyporoid                     -4.848191429 -6.52025747 -3.17612539
+Soft Rot-Saprotroph                   0.131460360 -1.13460098  1.39752170
+Symbiotroph-Saprotroph               -1.642797975 -2.51250423 -0.77309172
+Undefined Saprotroph-Saprotroph      -0.406030315 -1.03728343  0.22522280
+White Rot-Saprotroph                  2.252118442  1.28057211  3.22366477
+Wood Saprotroph-Saprotroph            0.706068684 -0.08661784  1.49875521
+Yeast-Saprotroph                     -2.974092670 -4.02888465 -1.91930069
+Symbiotroph-Soft Rot                 -1.774258335 -3.20921771 -0.33929896
+Undefined Saprotroph-Soft Rot        -0.537490676 -1.84179123  0.76680988
+White Rot-Soft Rot                    2.120658082  0.62178460  3.61953156
+Wood Saprotroph-Soft Rot              0.574608324 -0.81502162  1.96423826
+Yeast-Soft Rot                       -3.105553030 -4.65967837 -1.55142769
+Undefined Saprotroph-Symbiotroph      1.236767660  0.31227991  2.16125541
+White Rot-Symbiotroph                 3.894916417  2.71165847  5.07817437
+Wood Saprotroph-Symbiotroph           2.348866659  1.30744982  3.39028349
+Yeast-Symbiotroph                    -1.331294695 -2.58380546 -0.07878393
+White Rot-Undefined Saprotroph        2.658148758  1.63727124  3.67902627
+Wood Saprotroph-Undefined Saprotroph  1.112098999  0.25966686  1.96453114
+Yeast-Undefined Saprotroph           -2.568062355 -3.66845990 -1.46766481
+Wood Saprotroph-White Rot            -1.546049758 -2.67390717 -0.41819235
+Yeast-White Rot                      -5.226211112 -6.55146449 -3.90095773
+Yeast-Wood Saprotroph                -3.680161354 -4.88047222 -2.47985049
+                                         p adj
+Animal Pathogen-Agaricoid            0.0001636
+Boletoid-Agaricoid                   0.0033266
+Brown Rot-Agaricoid                  0.0252730
+Corticioid-Agaricoid                 1.0000000
+Ectomycorrhizal-Agaricoid            0.0004737
+Endophyte-Agaricoid                  0.9740540
+Gasteroid-Agaricoid                  0.9931384
+Microfungus-Agaricoid                1.0000000
+Pathotroph-Agaricoid                 0.7839176
+Plant Pathogen-Agaricoid             1.0000000
+Polyporoid-Agaricoid                 0.0921322
+Saprotroph-Agaricoid                 0.9999992
+Soft Rot-Agaricoid                   1.0000000
+Symbiotroph-Agaricoid                0.0000643
+Undefined Saprotroph-Agaricoid       0.8922099
+White Rot-Agaricoid                  0.0000630
+Wood Saprotroph-Agaricoid            0.9992053
+Yeast-Agaricoid                      0.0000000
+Boletoid-Animal Pathogen             0.9989450
+Brown Rot-Animal Pathogen            1.0000000
+Corticioid-Animal Pathogen           0.0039614
+Ectomycorrhizal-Animal Pathogen      1.0000000
+Endophyte-Animal Pathogen            0.7317542
+Gasteroid-Animal Pathogen            0.9540920
+Microfungus-Animal Pathogen          0.0000003
+Pathotroph-Animal Pathogen           0.0120937
+Plant Pathogen-Animal Pathogen       0.0000005
+Polyporoid-Animal Pathogen           0.0000000
+Saprotroph-Animal Pathogen           0.0000060
+Soft Rot-Animal Pathogen             0.0021384
+Symbiotroph-Animal Pathogen          0.9999994
+Undefined Saprotroph-Animal Pathogen 0.0032980
+White Rot-Animal Pathogen            0.0000000
+Wood Saprotroph-Animal Pathogen      0.0000000
+Yeast-Animal Pathogen                0.6849637
+Brown Rot-Boletoid                   0.9975362
+Corticioid-Boletoid                  0.0076737
+Ectomycorrhizal-Boletoid             0.9948247
+Endophyte-Boletoid                   0.3702079
+Gasteroid-Boletoid                   0.6078264
+Microfungus-Boletoid                 0.0005995
+Pathotroph-Boletoid                  0.0613530
+Plant Pathogen-Boletoid              0.0006716
+Polyporoid-Boletoid                  0.0000002
+Saprotroph-Boletoid                  0.0038865
+Soft Rot-Boletoid                    0.0093954
+Symbiotroph-Boletoid                 0.9552631
+Undefined Saprotroph-Boletoid        0.0385599
+White Rot-Boletoid                   0.0000000
+Wood Saprotroph-Boletoid             0.0000662
+Yeast-Boletoid                       1.0000000
+Corticioid-Brown Rot                 0.0748509
+Ectomycorrhizal-Brown Rot            1.0000000
+Endophyte-Brown Rot                  0.9672338
+Gasteroid-Brown Rot                  0.9963929
+Microfungus-Brown Rot                0.0021707
+Pathotroph-Brown Rot                 0.4290254
+Plant Pathogen-Brown Rot             0.0026130
+Polyporoid-Brown Rot                 0.0000002
+Saprotroph-Brown Rot                 0.0203764
+Soft Rot-Brown Rot                   0.0837555
+Symbiotroph-Brown Rot                1.0000000
+Undefined Saprotroph-Brown Rot       0.2839585
+White Rot-Brown Rot                  0.0000000
+Wood Saprotroph-Brown Rot            0.0001091
+Yeast-Brown Rot                      0.7944904
+Ectomycorrhizal-Corticioid           0.0087802
+Endophyte-Corticioid                 0.9831242
+Gasteroid-Corticioid                 0.9936666
+Microfungus-Corticioid               1.0000000
+Pathotroph-Corticioid                0.9480227
+Plant Pathogen-Corticioid            1.0000000
+Polyporoid-Corticioid                0.4605281
+Saprotroph-Corticioid                0.9999993
+Soft Rot-Corticioid                  1.0000000
+Symbiotroph-Corticioid               0.0061535
+Undefined Saprotroph-Corticioid      0.9791854
+White Rot-Corticioid                 0.0203902
+Wood Saprotroph-Corticioid           0.9999997
+Yeast-Corticioid                     0.0000000
+Endophyte-Ectomycorrhizal            0.8595350
+Gasteroid-Ectomycorrhizal            0.9840915
+Microfungus-Ectomycorrhizal          0.0000012
+Pathotroph-Ectomycorrhizal           0.0321476
+Plant Pathogen-Ectomycorrhizal       0.0000020
+Polyporoid-Ectomycorrhizal           0.0000000
+Saprotroph-Ectomycorrhizal           0.0000226
+Soft Rot-Ectomycorrhizal             0.0053344
+Symbiotroph-Ectomycorrhizal          1.0000000
+Undefined Saprotroph-Ectomycorrhizal 0.0097213
+White Rot-Ectomycorrhizal            0.0000000
+Wood Saprotroph-Ectomycorrhizal      0.0000000
+Yeast-Ectomycorrhizal                0.4249393
+Gasteroid-Endophyte                  1.0000000
+Microfungus-Endophyte                0.8249635
+Pathotroph-Endophyte                 1.0000000
+Plant Pathogen-Endophyte             0.8401506
+Polyporoid-Endophyte                 0.0029693
+Saprotroph-Endophyte                 0.9959721
+Soft Rot-Endophyte                   0.9967244
+Symbiotroph-Endophyte                0.9191096
+Undefined Saprotroph-Endophyte       1.0000000
+White Rot-Endophyte                  0.0000037
+Wood Saprotroph-Endophyte            0.3484226
+Yeast-Endophyte                      0.0024796
+Microfungus-Gasteroid                0.9540357
+Pathotroph-Gasteroid                 1.0000000
+Plant Pathogen-Gasteroid             0.9580912
+Polyporoid-Gasteroid                 0.0256791
+Saprotroph-Gasteroid                 0.9994186
+Soft Rot-Gasteroid                   0.9990716
+Symbiotroph-Gasteroid                0.9956528
+Undefined Saprotroph-Gasteroid       1.0000000
+White Rot-Gasteroid                  0.0004972
+Wood Saprotroph-Gasteroid            0.6887116
+Yeast-Gasteroid                      0.0643013
+Pathotroph-Microfungus               0.0573136
+Plant Pathogen-Microfungus           1.0000000
+Polyporoid-Microfungus               0.0549848
+Saprotroph-Microfungus               0.9725839
+Soft Rot-Microfungus                 1.0000000
+Symbiotroph-Microfungus              0.0000000
+Undefined Saprotroph-Microfungus     0.1003881
+White Rot-Microfungus                0.0000006
+Wood Saprotroph-Microfungus          0.9995595
+Yeast-Microfungus                    0.0000000
+Plant Pathogen-Pathotroph            0.0832758
+Polyporoid-Pathotroph                0.0000026
+Saprotroph-Pathotroph                0.5390784
+Soft Rot-Pathotroph                  0.9807109
+Symbiotroph-Pathotroph               0.0039866
+Undefined Saprotroph-Pathotroph      1.0000000
+White Rot-Pathotroph                 0.0000000
+Wood Saprotroph-Pathotroph           0.0004026
+Yeast-Pathotroph                     0.0000000
+Polyporoid-Plant Pathogen            0.0590028
+Saprotroph-Plant Pathogen            0.9839883
+Soft Rot-Plant Pathogen              1.0000000
+Symbiotroph-Plant Pathogen           0.0000000
+Undefined Saprotroph-Plant Pathogen  0.1426094
+White Rot-Plant Pathogen             0.0000011
+Wood Saprotroph-Plant Pathogen       0.9996041
+Yeast-Plant Pathogen                 0.0000000
+Saprotroph-Polyporoid                0.0004682
+Soft Rot-Polyporoid                  0.0765449
+Symbiotroph-Polyporoid               0.0000000
+Undefined Saprotroph-Polyporoid      0.0000049
+White Rot-Polyporoid                 0.9999986
+Wood Saprotroph-Polyporoid           0.4011942
+Yeast-Polyporoid                     0.0000000
+Soft Rot-Saprotroph                  1.0000000
+Symbiotroph-Saprotroph               0.0000000
+Undefined Saprotroph-Saprotroph      0.7347897
+White Rot-Saprotroph                 0.0000000
+Wood Saprotroph-Saprotroph           0.1541827
+Yeast-Saprotroph                     0.0000000
+Symbiotroph-Soft Rot                 0.0021039
+Undefined Saprotroph-Soft Rot        0.9953919
+White Rot-Soft Rot                   0.0001105
+Wood Saprotroph-Soft Rot             0.9952018
+Yeast-Soft Rot                       0.0000000
+Undefined Saprotroph-Symbiotroph     0.0004163
+White Rot-Symbiotroph                0.0000000
+Wood Saprotroph-Symbiotroph          0.0000000
+Yeast-Symbiotroph                    0.0235817
+White Rot-Undefined Saprotroph       0.0000000
+Wood Saprotroph-Undefined Saprotroph 0.0007188
+Yeast-Undefined Saprotroph           0.0000000
+Wood Saprotroph-White Rot            0.0002382
+Yeast-White Rot                      0.0000000
+Yeast-Wood Saprotroph                0.0000000
+
+> library(agricolae)
+Warning message:
+package ‘agricolae’ was built under R version 3.5.3 
+> comparisons <- HSD.test(ANOVA1, "status", group=TRUE)
+> comparisons
+$`statistics`
+   MSerror   Df     Mean     CV
+  6.209804 2234 3.697032 67.404
+
+$parameters
+   test name.t ntr StudentizedRange alpha
+  Tukey status  19         4.979884  0.05
+
+$means
+                     C_gene_frq       std   r       Min       Max       Q25
+Agaricoid             4.1543589 2.6556034  69 0.2754366 12.165450 1.9676432
+Animal Pathogen       1.9455892 1.8398207  55 0.0000000  6.941042 0.4934900
+Boletoid              0.9547424 0.3814789  13 0.4764930  1.771688 0.7283109
+Brown Rot             2.1010809 1.6718213  29 0.2019712  6.163830 0.8097603
+Corticioid            4.2528505 2.3849502  33 0.4308859  8.444075 1.5638439
+Ectomycorrhizal       2.0753144 2.2538523  58 0.2754366 10.162207 0.6975325
+Endophyte             3.2291036 2.1739036  30 0.0000000  8.153707 1.8276034
+Gasteroid             3.1641994 2.9317506  18 0.5506365 11.605008 1.0812665
+Microfungus           4.2763788 2.4067119 171 0.0000000  9.680771 2.4975050
+Pathotroph            3.4081360 2.7346585 239 0.0000000 10.267580 1.0478728
+Plant Pathogen        4.2708548 2.8114458 155 0.0000000 10.034736 1.6228781
+Polyporoid            5.7748248 2.5855246  42 0.8651267  9.160026 4.2917041
+Saprotroph            3.9007261 2.6811182 513 0.0000000 10.735988 1.8982536
+Soft Rot              4.0321864 2.1504533  53 0.6993985  9.547739 2.4336283
+Symbiotroph           2.2579281 2.1228950 127 0.0000000  8.673389 0.7102880
+Undefined Saprotroph  3.4946957 2.6155870 310 0.0000000 10.267580 1.4150891
+White Rot             6.1528445 2.0766456  97 1.7984571 11.290673 4.6242372
+Wood Saprotroph       4.6067947 2.5080304 161 0.2019712 10.735988 2.5960540
+Yeast                 0.9266334 1.1057644  80 0.0000000  5.311325 0.3711897
+                           Q50       Q75
+Agaricoid            4.2794896 5.6611542
+Animal Pathogen      1.4104372 3.0065209
+Boletoid             0.8788891 1.0612106
+Brown Rot            1.5953621 3.1901446
+Corticioid           4.8251257 5.8528428
+Ectomycorrhizal      1.0160994 2.5302155
+Endophyte            2.7078232 4.7641743
+Gasteroid            1.6274288 4.6906491
+Microfungus          3.6609527 6.3720756
+Pathotroph           2.7662517 5.6219541
+Plant Pathogen       3.7257999 6.7787946
+Polyporoid           6.7686463 7.7560811
+Saprotroph           3.5848148 5.7614558
+Soft Rot             3.3304696 5.5653934
+Symbiotroph          1.6310933 2.8993640
+Undefined Saprotroph 3.0421278 4.9681359
+White Rot            6.0521551 7.7730947
+Wood Saprotroph      4.1220115 6.4316700
+Yeast                0.4641879 0.9655542
+
+$comparison
+NULL
+
+$groups
+                     C_gene_frq groups
+White Rot             6.1528445      a
+Polyporoid            5.7748248     ab
+Wood Saprotroph       4.6067947     bc
+Microfungus           4.2763788    bcd
+Plant Pathogen        4.2708548    bcd
+Corticioid            4.2528505    bcd
+Agaricoid             4.1543589    bcd
+Soft Rot              4.0321864    bcd
+Saprotroph            3.9007261     cd
+Undefined Saprotroph  3.4946957      d
+Pathotroph            3.4081360      d
+Endophyte             3.2291036     de
+Gasteroid             3.1641994    def
+Symbiotroph           2.2579281     ef
+Brown Rot             2.1010809     ef
+Ectomycorrhizal       2.0753144     ef
+Animal Pathogen       1.9455892     ef
+Boletoid              0.9547424     ef
+Yeast                 0.9266334      f
+
+attr(,"class")
+[1] "group"
